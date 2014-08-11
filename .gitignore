@@ -1,0 +1,12 @@
+bower_components/
+build/
+.idea/
+
+## File-based project format
+*.ipr
+*.iml
+*.iws
+
+# igonre css files as all style sheats are created via SCSS
+*.css
+styles/*.css
