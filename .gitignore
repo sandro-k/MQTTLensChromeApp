@@ -11,3 +11,5 @@ build/
 *.css
 styles/*.css
 node_modules
+
+/.sass-cache/
