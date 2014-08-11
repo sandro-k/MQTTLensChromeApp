@@ -14,9 +14,8 @@ module.exports = function (grunt) {
             dist: {                            // Target
                 files: [{
                     expand: true,
-                    cwd: 'css',
                     src: ['styles/*.scss'],
-                    dest: 'build/style',
+                    dest: 'build',
                     ext: '.css'
                 }]
             }
@@ -25,8 +24,8 @@ module.exports = function (grunt) {
         vulcanize: {
             default: {
                 options: {
-                    // set CSP for polymer
                     csp: true,
+                    strip: true
                 },
                 files: {
                     // Target-specific file lists and/or options go here.
