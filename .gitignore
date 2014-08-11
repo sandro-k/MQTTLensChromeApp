@@ -10,3 +10,4 @@ build/
 # igonre css files as all style sheats are created via SCSS
 *.css
 styles/*.css
+node_modules
