@@ -1,5 +1,6 @@
 bower_components/
 build/
+build.*
 .idea/
 
 ## File-based project format
