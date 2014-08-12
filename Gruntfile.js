@@ -3,12 +3,14 @@ module.exports = function (grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        // todo(sandro-k) configure uglify or closure
         uglify: {
             build: {
                 src: 'js/app.js', // input
                 dest: 'js/build/app.min.js' // output
             }
         },
+
         // the SASS task
         sass: {
             dist: {                            // Target
@@ -20,6 +22,7 @@ module.exports = function (grunt) {
                 }]
             }
         },
+
         // the vulcanize task
         vulcanize: {
             default: {
@@ -29,31 +32,127 @@ module.exports = function (grunt) {
                 },
                 files: {
                     // Target-specific file lists and/or options go here.
-                    'build/build.html': 'index.html'
+                    'build.html': 'index.html'
                 }
             }
         },
 
+        mkdir: {
+            build: {
+                options: {
+                    create: ['build', 'build/styles', 'build/bower_components/platform', 'build/bower_components/polymer', 'build/bower_components/chrome-app-livereload']
+                }
+            }
+        },
+
+        clean: {
+            build: {
+                src: ["build.html", "build.js"]
+            }
+        },
+
+        copy: {
+            manifest: {
+                expand: true,
+                src: ['manifest.json'],
+                dest: 'build/',
+                filter: 'isFile'
+            },
+            vulcanize: {
+                expand: true,
+                src: ['build.html', 'build.js'],
+                dest: 'build/',
+                filter: 'isFile'
+            },
+            assets: {
+                expand: true,
+                src: ['assets/*'],
+                dest: 'build/',
+                filter: 'isFile'
+            },
+            polymer: {
+                expand: true,
+                src: ['bower_components/platform/platform.js', 'bower_components/polymer/polymer.js'],
+                dest: 'build/',
+                filter: 'isFile'
+            },
+
+            livereload: {
+                expand: true,
+                src: ['bower_components/chrome-app-livereload/livereload.js'],
+                dest: 'build/',
+                filter: 'isFile'
+            },
+
+            mainjs: {
+                expand: true,
+                src: ['main.js'],
+                dest: 'build/',
+                filter: 'isFile'
+            }
+        },
 
         watch: {
             // watch for SCSS files and compile to css
             sass: {
                 files: ['styles/*.scss'],
-                tasks: ['sass']
+                tasks: ['sass'],
+                options: {
+                    // use live reload that is build in with grunt watch and use default port
+                    livereload: true
+                }
             },
             vulcanize: {
                 files: ['index.html'],
-                tasks: ['vulcanize']
+                tasks: ['polymer_clean'],
+                options: {
+                    // use live reload that is build in with grunt watch and use default port
+                    livereload: true
+                }
+            },
+            manifest: {
+                files: ['manifest.json'],
+                task: ['copy:manifest'],
+                options: {
+                    // use live reload that is build in with grunt watch and use default port
+                    // todo(sandro-k) check if changes in the manifest are refreshed
+                    livereload: true
+                }
+            },
+            assets: {
+                files: ['assets/*'],
+                task: ['copy:assets'],
+                options: {
+                    // use live reload that is build in with grunt watch and use default port
+                    // todo(sandro-k) check if changes in the manifest are refreshed
+                    livereload: true
+                }
+            },
+            mainjs: {
+                files: ['main.js'],
+                task: ['copy:mainjs'],
+                options: {
+                    // use live reload that is build in with grunt watch and use default port
+                    livereload: true
+                }
             }
         }
-//        // reload page after the scss file had been compiled
-//        livereload: {
-//            // Here we watch the files the sass task will compile to
-//            // These files are sent to the live reload server after sass compiles to them
-//            options: { livereload: true },
-//            files: ['css/build/*', 'js/build/*']
-//        }
     });
+
+
+    // a task that creates the initial folder structure and copies some dependencies
+    grunt.registerTask('init', ['mkdir:build', 'copy:polymer', 'copy:livereload', 'copy:assets', 'copy:manifest', 'sass', 'copy:mainjs']);
+
+    // a task that builds the overall app
+    grunt.registerTask('build', ['init', 'polymer_clean', 'mows']);
+
+    // a that that builds, moves and cleans polymer
+    grunt.registerTask('polymer_clean', ['vulcanize', 'copy:vulcanize', 'clean:build']);
+
+    // a task that builds mows
+    // todo(sandro-k) create build process
+    grunt.registerTask('mows', []);
+
 
     // Load the plugin that provides the "uglify" task.
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -67,8 +166,19 @@ module.exports = function (grunt) {
     // vulcanize
     grunt.loadNpmTasks('grunt-vulcanize');
 
+    // grunt copy we need to manually copy a couple of files to the build folder
+    grunt.loadNpmTasks('grunt-contrib-copy');
+
+    // we need to create some directories
+    grunt.loadNpmTasks('grunt-mkdir');
+
+    // we need to clean up after build
+    grunt.loadNpmTasks('grunt-contrib-clean');
+
     // Default task(s).
     grunt.registerTask('default', ['uglify', 'sass', 'vulcanize']);
+
+
 
 
 
