@@ -70,6 +70,7 @@ module.exports = function (grunt) {
                 dest: 'build/',
                 filter: 'isFile'
             },
+
             polymer: {
                 expand: true,
                 src: ['bower_components/platform/platform.js', 'bower_components/polymer/polymer.js'],
@@ -87,6 +88,19 @@ module.exports = function (grunt) {
             mainjs: {
                 expand: true,
                 src: ['main.js'],
+                dest: 'build/',
+                filter: 'isFile'
+            },
+
+            scripts: {
+                expand: true,
+                src: [
+                    'bower_components/google-code-prettify/src/prettify.js',
+                    'bower_components/moment/min/moment.min.js',
+                    'bower_components/jquery/dist/jquery.js',
+                    'bower_components/mqtt-connection/mows/mows.js',
+                    'bower_components/underscore/underscore.js'
+                ],
                 dest: 'build/',
                 filter: 'isFile'
             }
@@ -141,7 +155,7 @@ module.exports = function (grunt) {
 
 
     // a task that creates the initial folder structure and copies some dependencies
-    grunt.registerTask('init', ['mkdir:build', 'copy:polymer', 'copy:livereload', 'copy:assets', 'copy:manifest', 'sass', 'copy:mainjs']);
+    grunt.registerTask('init', ['mkdir:build', 'copy:polymer', 'copy:livereload', 'copy:assets', 'copy:manifest', 'sass', 'copy:mainjs', 'copy:scripts']);
 
     // a task that builds the overall app
     grunt.registerTask('build', ['init', 'polymer_clean', 'mows']);
