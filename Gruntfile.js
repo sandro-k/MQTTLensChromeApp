@@ -40,7 +40,7 @@ module.exports = function (grunt) {
         mkdir: {
             build: {
                 options: {
-                    create: ['build', 'build/styles', 'build/bower_components/platform', 'build/bower_components/polymer', 'build/bower_components/chrome-app-livereload']
+                    create: ['build', 'build/assets' , 'build/styles', 'build/bower_components/platform', 'build/bower_components/polymer', 'build/bower_components/chrome-app-livereload']
                 }
             }
         },
@@ -103,6 +103,22 @@ module.exports = function (grunt) {
                 ],
                 dest: 'build/',
                 filter: 'isFile'
+            },
+            appAssets: {
+                expand: true,
+                src: [
+                    'assets/*'
+                ],
+                dest: 'build/',
+                filter: 'isFile'
+            },
+            assets: {
+                expand: true,
+                src: [
+                    'bower_components/*/assets/*'
+                ],
+                dest: 'build/',
+                filter: 'isFile'
             }
         },
 
@@ -155,7 +171,7 @@ module.exports = function (grunt) {
 
 
     // a task that creates the initial folder structure and copies some dependencies
-    grunt.registerTask('init', ['mkdir:build', 'copy:polymer', 'copy:livereload', 'copy:assets', 'copy:manifest', 'sass', 'copy:mainjs', 'copy:scripts']);
+    grunt.registerTask('init', ['mkdir:build', 'copy:polymer', 'copy:livereload', 'copy:assets', 'copy:manifest', 'sass', 'copy:mainjs', 'copy:scripts', 'copy:appAssets']);
 
     // a task that builds the overall app
     grunt.registerTask('build', ['init', 'polymer_clean', 'mows']);
