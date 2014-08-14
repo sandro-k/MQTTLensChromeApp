@@ -1,0 +1,8 @@
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+  min-height: 100%; }
+
+[class*='col-'] {
+  padding-left: 4px;
+  padding-right: 4px; }
