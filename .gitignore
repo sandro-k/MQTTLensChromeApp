@@ -1,6 +1,6 @@
 bower_components/
-build/
-build.*
+#build/
+#build.*
 .idea/
 
 ## File-based project format
@@ -9,8 +9,11 @@ build.*
 *.iws
 
 # igonre css files as all style sheats are created via SCSS
-*.css
+# TODO(sandro-k) remove css files after moving all styles to the elements
+# *.css
 styles/*.css
 node_modules
 
 /.sass-cache/
+
+/build/
