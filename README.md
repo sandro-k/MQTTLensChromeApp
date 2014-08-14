@@ -12,6 +12,7 @@
 
 `grunt build`
 
+load `build` folder als Chrome App
 
 ## Live reload 
 
