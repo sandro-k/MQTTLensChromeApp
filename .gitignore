@@ -1,5 +1,5 @@
 bower_components/
-#build/
+build/
 #build.*
 .idea/
 
