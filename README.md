@@ -8,13 +8,10 @@
 
 `bower install`
 
-`grunt init`
+`grunt`
 
-`grunt build`
 
-load `build` folder als Chrome App
-
-chrome://extensions/
+Navigate to `chrome://extensions/` in Chrome and load the `build` folder as a Chrome App
 
 ## Live reload 
 
