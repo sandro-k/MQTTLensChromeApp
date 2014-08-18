@@ -207,7 +207,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
 
     // Default task(s).
-    grunt.registerTask('default', ['uglify', 'sass', 'vulcanize']);
+    grunt.registerTask('default', ['build']);
 
 
 
