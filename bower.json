@@ -24,9 +24,7 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#~0.3.5",
-    "core-elements": "Polymer/core-elements#~0.3.5",
-    "paper-elements": "Polymer/paper-elements#~0.3.5",
-    "mqtt-connection": "sandro-k/mqtt-connection#master",
-    "mqtt-lens": "sandro-k/mqtt-lens"
+    "mqtt-lens": "sandro-k/mqtt-lens#master",
+    "chrome-app-livereload":  "bestander/chrome-app-livereload#~0.0.5"
   }
 }

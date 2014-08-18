@@ -14,6 +14,8 @@
 
 load `build` folder als Chrome App
 
+chrome://extensions/
+
 ## Live reload 
 
 `grunt watch`
