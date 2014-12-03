@@ -25,6 +25,9 @@
   "dependencies": {
     "polymer": "Polymer/polymer#~0.3.5",
     "mqtt-lens": "sandro-k/mqtt-lens#master",
-    "chrome-app-livereload":  "bestander/chrome-app-livereload#~0.0.5"
+    "chrome-app-livereload": "bestander/chrome-app-livereload#~0.0.5"
+  },
+  "resolutions": {
+    "polymer": "~0.3.5"
   }
 }
