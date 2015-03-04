@@ -2,6 +2,8 @@ bower_components/
 build/
 #build.*
 .idea/
+.bowerrc
+.DS_Store
 
 ## File-based project format
 *.ipr
