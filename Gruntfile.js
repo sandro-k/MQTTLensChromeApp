@@ -12,8 +12,10 @@ module.exports = function (grunt) {
         },
 
         // the SASS task
+        // there should be no dedicated styles for the Chrome-App,
+        // as all styles are loaded with the mqtt-lens component
         sass: {
-            dist: {                            // Target
+            dist: {
                 files: [{
                     expand: true,
                     src: ['styles/*.scss'],
@@ -24,6 +26,7 @@ module.exports = function (grunt) {
         },
 
         // the vulcanize task
+        // vulcanize is needed to run polymer within a Chrome-App
         vulcanize: {
             default: {
                 options: {
@@ -40,7 +43,8 @@ module.exports = function (grunt) {
         mkdir: {
             build: {
                 options: {
-                    create: ['build', 'build/assets' , 'build/styles', 'build/bower_components/platform', 'build/bower_components/polymer', 'build/bower_components/chrome-app-livereload']
+                    create: ['build', 'build/assets', 'build/styles', 'build/bower_components/platform',
+                        'build/bower_components/polymer', 'build/bower_components/chrome-app-livereload']
                 }
             }
         },
@@ -78,6 +82,9 @@ module.exports = function (grunt) {
                 filter: 'isFile'
             },
 
+            // we need a patched version of livereload to work within a chrome app
+            // see: https://github.com/mklabs/tiny-lr#0.0.5
+            // TODO (sandro-k) add link to patched github version
             livereload: {
                 expand: true,
                 src: ['bower_components/chrome-app-livereload/livereload.js'],
@@ -208,9 +215,6 @@ module.exports = function (grunt) {
 
     // Default task(s).
     grunt.registerTask('default', ['build']);
-
-
-
 
 
 };
