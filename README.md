@@ -4,6 +4,8 @@
 
 `git clone https://github.com/sandro-k/MQTTLensChromeApp.git`
 
+`git submodule init`
+
 `npm install`
 
 `bower install`
@@ -18,5 +20,7 @@ This will build MQTTLens in to the `build` directory. Navigate to `chrome://exte
 
 ## Changelog
 
-0.0.2 TODO sandro-k check github log for changes
+0.0.2
+* Updated to Polymer 0.5.5 and webcomponents.js
+
 0.0.1 Initial release
