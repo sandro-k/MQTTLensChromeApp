@@ -171,12 +171,21 @@ module.exports = function (grunt) {
         },
 
         connect: {
-            server: {
+            def: {
                 options: {
                     open: {
-                        target: 'http://localhost:9001/build.html'
+                        target: 'http://localhost:9001/bower_components'
                     },
                     port: 9001,
+                    base: '.'
+                }
+            },
+            build: {
+                options: {
+                    open: {
+                        target: 'http://localhost:9002/build.html'
+                    },
+                    port: 9002,
                     base: 'build'
                 }
             }
