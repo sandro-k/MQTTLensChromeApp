@@ -1,0 +1,27 @@
+[submodule "bower_components/mqtt-lens"]
+	path = bower_components/mqtt-lens
+	url = https://github.com/sandro-k/mqtt-lens.git
+[submodule "bower_components/mqtt-message-ui"]
+	path = bower_components/mqtt-message-ui
+	url = https://github.com/sandro-k/mqtt-message-ui.git
+[submodule "bower_components/mqtt-message-detail-ui"]
+	path = bower_components/mqtt-message-detail-ui
+	url = https://github.com/sandro-k/mqtt-message-detail-ui.git
+[submodule "bower_components/mqtt-connection-ui"]
+	path = bower_components/mqtt-connection-ui
+	url = https://github.com/sandro-k/mqtt-connection-ui.git
+[submodule "bower_components/mqtt-connection"]
+	path = bower_components/mqtt-connection
+	url = https://github.com/sandro-k/mqtt-connection.git
+[submodule "bower_components/mqtt-lens-style"]
+	path = bower_components/mqtt-lens-style
+	url = https://github.com/sandro-k/mqtt-lens-style.git
+[submodule "bower_components/mqtt-subscription-ui"]
+	path = bower_components/mqtt-subscription-ui
+	url = https://github.com/sandro-k/mqtt-subscription-ui.git
+[submodule "bower_components/changeover-icon"]
+	path = bower_components/changeover-icon
+	url = https://github.com/sandro-k/changeover-icon.git
+[submodule "bower_components/code-pretty"]
+	path = bower_components/code-pretty
+	url = https://github.com/sandro-k/code-pretty.git
