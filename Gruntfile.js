@@ -18,8 +18,8 @@ module.exports = function (grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    src: ['styles/*.scss'],
-                    dest: 'build',
+                    src: ['mqttLensChromeApp.scss'],
+                    dest: '.',
                     ext: '.css'
                 }]
             }
@@ -43,8 +43,15 @@ module.exports = function (grunt) {
         mkdir: {
             build: {
                 options: {
-                    create: ['build', 'build/assets', 'build/styles', 'build/bower_components/platform',
-                        'build/bower_components/polymer', 'build/bower_components/chrome-app-livereload']
+                    create: [
+                        'build',
+                        'build/assets',
+                        'build/styles',
+                        'build/bower_components/platform',
+                        'build/bower_components/polymer',
+                        'build/bower_components/webcomponentsjs',
+                        'build/bower_components/core-focusable/',
+                        'build/bower_components/chrome-app-livereload']
                 }
             }
         },
@@ -63,7 +70,10 @@ module.exports = function (grunt) {
                 filter: 'isFile'
             },
             vulcanize: {
-                expand: true,
+                options: {
+                    csp: true,
+                    strip: true
+                },
                 src: ['build.html', 'build.js'],
                 dest: 'build/',
                 filter: 'isFile'
@@ -77,10 +87,40 @@ module.exports = function (grunt) {
 
             polymer: {
                 expand: true,
-                src: ['bower_components/platform/platform.js', 'bower_components/polymer/polymer.js'],
+                src: [
+                    'bower_components/webcomponentsjs/webcomponents.js',
+                    'bower_components/polymer/polymer.js',
+                    'bower_components/core-focusable/polymer-mixin.js',
+                    'bower_components/core-focusable/core-focusable.js'],
                 dest: 'build/',
                 filter: 'isFile'
             },
+
+
+            //polymer2: {
+            //    expand: true,
+            //    src: 'bower_components/**',
+            //    dest: 'build/'
+            //},
+            //
+
+            bower_css: {
+                cwd: 'bower_components/',
+                flatten:true,
+                expand: true,
+                filter: 'isFile',
+                src: '**/*.css',
+                dest: 'build/'
+            },
+
+            bower_css2: {
+                cwd: 'bower_components/',
+                expand: true,
+                filter: 'isFile',
+                src: '**/*.css',
+                dest: 'build/'
+            },
+
 
             // we need a patched version of livereload to work within a chrome app
             // see: https://github.com/mklabs/tiny-lr#0.0.5
@@ -127,6 +167,18 @@ module.exports = function (grunt) {
                 ],
                 dest: 'build/',
                 filter: 'isFile'
+            }
+        },
+
+        connect: {
+            server: {
+                options: {
+                    open: {
+                        target: 'http://localhost:9001/build.html'
+                    },
+                    port: 9001,
+                    base: 'build'
+                }
             }
         },
 
@@ -179,10 +231,13 @@ module.exports = function (grunt) {
 
 
     // a task that creates the initial folder structure and copies some dependencies
-    grunt.registerTask('init', ['mkdir:build', 'copy:polymer', 'copy:livereload', 'copy:assets', 'copy:manifest', 'sass', 'copy:mainjs', 'copy:scripts', 'copy:appAssets']);
+    //grunt.registerTask('init', ['mkdir:build', 'copy:polymer', 'copy:polymer2', 'copy:livereload', 'copy:assets', 'copy:manifest', 'sass', 'copy:mainjs', 'copy:scripts', 'copy:appAssets']);
+    grunt.registerTask('init', ['mkdir', 'copy', 'sass']);
 
     // a task that builds the overall app
     grunt.registerTask('build', ['init', 'polymer_clean', 'mows']);
+
+    grunt.registerTask('serv', ['build','connect', 'watch']);
 
     // a that that builds, moves and cleans polymer
     grunt.registerTask('polymer_clean', ['vulcanize', 'copy:vulcanize', 'clean:build']);
@@ -201,6 +256,9 @@ module.exports = function (grunt) {
     // watch
     grunt.loadNpmTasks('grunt-contrib-watch');
 
+    // local http server
+    grunt.loadNpmTasks('grunt-contrib-connect');
+
     // vulcanize
     grunt.loadNpmTasks('grunt-vulcanize');
 
@@ -212,6 +270,7 @@ module.exports = function (grunt) {
 
     // we need to clean up after build
     grunt.loadNpmTasks('grunt-contrib-clean');
+
 
     // Default task(s).
     grunt.registerTask('default', ['build']);
