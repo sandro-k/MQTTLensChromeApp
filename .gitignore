@@ -1,4 +1,15 @@
 bower_components/
+!bower_components/mqtt-lens
+!bower_components/mqtt-message-ui
+!bower_components/mqtt-message-detail-ui
+!bower_components/mqtt-connection-ui
+!bower_components/mqtt-connection
+!bower_components/mqtt-lens-style
+!bower_components/mqtt-subscription-ui
+!bower_components/changeover-icon
+!bower_components/code-pretty
+
+
 build/
 #build.*
 .idea/
