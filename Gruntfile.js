@@ -206,7 +206,7 @@ module.exports = function (grunt) {
             build: {
                 options: {
                     //open: {
-                        //target: 'http://localhost:9002/build.html'
+                    //    target: 'http://localhost:9002/build.html'
                     //},
                     port: 9002,
                     base: 'build'
