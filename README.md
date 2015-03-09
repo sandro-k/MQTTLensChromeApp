@@ -12,7 +12,11 @@
 
 `grunt`
 
-This will build MQTTLens in to the `build` directory. Navigate to `chrome://extensions/` in Chrome and load the `build` folder as a Chrome App
+
+This will build MQTTlens in to the `build` directory. Navigate to `chrome://extensions/` in Chrome and load the `build`
+folder as a Chrome App.
+
+To debug MQTTlens installed from the Chrome App Store brows to  [`chrome://inspect/#apps`](chrome://inspect/#apps)
 
 ## Live reload 
 
