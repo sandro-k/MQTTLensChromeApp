@@ -17,9 +17,19 @@ module.exports = function (grunt) {
         sass: {
             dist: {
                 files: [{
+                    sourcemap: false,
                     expand: true,
-                    src: ['mqttLensChromeApp.scss'],
+                    src: 'styles/mqttLensChromeApp.scss',
                     dest: '.',
+                    ext: '.css'
+                }]
+            },
+            mqtt_message_ui: {
+                files: [{
+                    sourcemap: false,
+                    expand: false,
+                    src: 'bower_components/mqtt-message-ui/mqtt-message-ui.scss',
+                    dest: 'bower_components/mqtt-message-ui/mqtt-message-ui.css',
                     ext: '.css'
                 }]
             }
@@ -80,10 +90,19 @@ module.exports = function (grunt) {
             },
             assets: {
                 expand: true,
-                src: ['assets/*'],
+                src: ['assets/*', 'bower_components/*/assets/*'],
                 dest: 'build/',
                 filter: 'isFile'
             },
+
+            //assets: {
+            //    expand: true,
+            //    src: [
+            //
+            //    ],
+            //    dest: 'build/',
+            //    filter: 'isFile'
+            //},
 
             polymer: {
                 expand: true,
@@ -106,7 +125,7 @@ module.exports = function (grunt) {
 
             bower_css: {
                 cwd: 'bower_components/',
-                flatten:true,
+                flatten: true,
                 expand: true,
                 filter: 'isFile',
                 src: '**/*.css',
@@ -119,6 +138,18 @@ module.exports = function (grunt) {
                 filter: 'isFile',
                 src: '**/*.css',
                 dest: 'build/'
+            },
+
+            mqtt_lens_chrome_app_css: {
+                cwd: 'styles/',
+                src: [
+                    'mqttLensChromeApp.css',
+                    'mqttLensChromeApp.css.map',
+                    'mqttLensChromeApp.scss'],
+                dest: 'build/',
+                expand: true,
+                flatten: true,
+                filter: 'isFile'
             },
 
 
@@ -159,32 +190,24 @@ module.exports = function (grunt) {
                 ],
                 dest: 'build/',
                 filter: 'isFile'
-            },
-            assets: {
-                expand: true,
-                src: [
-                    'bower_components/*/assets/*'
-                ],
-                dest: 'build/',
-                filter: 'isFile'
             }
         },
 
         connect: {
             def: {
                 options: {
-                    open: {
-                        target: 'http://localhost:9001/bower_components'
-                    },
+                    //open: {
+                        //target: 'http://localhost:9001/bower_components'
+                    //},
                     port: 9001,
                     base: '.'
                 }
             },
             build: {
                 options: {
-                    open: {
-                        target: 'http://localhost:9002/build.html'
-                    },
+                    //open: {
+                        //target: 'http://localhost:9002/build.html'
+                    //},
                     port: 9002,
                     base: 'build'
                 }
@@ -193,9 +216,26 @@ module.exports = function (grunt) {
 
         watch: {
             // watch for SCSS files and compile to css
+            dependencies: {
+                files: [
+                    'bower_components/mqtt-connection/*',
+                    'bower_components/mqtt-connection-ui/*',
+                    'bower_components/mqtt-lens/*',
+                    'bower_components/mqtt-lens-style/*',
+                    'bower_components/mqtt-message-details-ui/*',
+                    'bower_components/mqtt-message-ui/*',
+                    'bower_components/mqtt-subscription-ui/*'
+                ],
+                tasks: ['build'],
+                options: {
+                    // use live reload that is build in with grunt watch and use default port
+                    livereload: true
+                }
+
+            },
             sass: {
                 files: ['styles/*.scss'],
-                tasks: ['sass'],
+                tasks: ['sass', 'build'],
                 options: {
                     // use live reload that is build in with grunt watch and use default port
                     livereload: true
@@ -241,12 +281,12 @@ module.exports = function (grunt) {
 
     // a task that creates the initial folder structure and copies some dependencies
     //grunt.registerTask('init', ['mkdir:build', 'copy:polymer', 'copy:polymer2', 'copy:livereload', 'copy:assets', 'copy:manifest', 'sass', 'copy:mainjs', 'copy:scripts', 'copy:appAssets']);
-    grunt.registerTask('init', ['mkdir', 'copy', 'sass']);
+    grunt.registerTask('init', ['mkdir', 'sass', 'copy']);
 
     // a task that builds the overall app
     grunt.registerTask('build', ['init', 'polymer_clean', 'mows']);
 
-    grunt.registerTask('serv', ['build','connect', 'watch']);
+    grunt.registerTask('srv', ['build', 'connect', 'watch']);
 
     // a that that builds, moves and cleans polymer
     grunt.registerTask('polymer_clean', ['vulcanize', 'copy:vulcanize', 'clean:build']);
