@@ -24,5 +24,8 @@
             "listen": "*"
         }
     },
-    "permissions": [ "*://*/*", "<all_urls>"]
+    "permissions": [
+      "storage",
+      "*://*/*",
+      "<all_urls>"]
 }
