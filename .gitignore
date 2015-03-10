@@ -8,6 +8,7 @@ bower_components/
 !bower_components/mqtt-subscription-ui
 !bower_components/changeover-icon
 !bower_components/code-pretty
+!bower_components/chrome-storage/
 
 
 build/

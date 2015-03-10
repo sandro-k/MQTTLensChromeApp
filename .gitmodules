@@ -34,3 +34,6 @@
 	path = bower_components/code-pretty
 	url = https://github.com/sandro-k/code-pretty.git
 	fetchRecurseSubmodules = true
+[submodule "bower_components/chrome-storage"]
+	path = bower_components/chrome-storage
+	url = https://github.com/sandro-k/chrome-storage.git
