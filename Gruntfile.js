@@ -177,6 +177,7 @@ module.exports = function (grunt) {
                     'bower_components/moment/min/moment.min.js',
                     'bower_components/jquery/dist/jquery.js',
                     'bower_components/mqtt-connection/mows/mows.js',
+                    'bower_components/mqtt-connection/mqemitter/browserMqemitter.js',
                     'bower_components/mqtt-connection/mqtt-bundel.js',
                     'bower_components/underscore/underscore.js'
                 ],
