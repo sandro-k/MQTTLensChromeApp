@@ -30,4 +30,5 @@ node_modules
 
 /.sass-cache/
 
-/build/
+/builds
+/ideas
