@@ -88,21 +88,13 @@ module.exports = function (grunt) {
                 dest: 'build/',
                 filter: 'isFile'
             },
+
             assets: {
                 expand: true,
                 src: ['assets/*', 'bower_components/*/assets/*'],
                 dest: 'build/',
                 filter: 'isFile'
             },
-
-            //assets: {
-            //    expand: true,
-            //    src: [
-            //
-            //    ],
-            //    dest: 'build/',
-            //    filter: 'isFile'
-            //},
 
             polymer: {
                 expand: true,
@@ -114,14 +106,6 @@ module.exports = function (grunt) {
                 dest: 'build/',
                 filter: 'isFile'
             },
-
-
-            //polymer2: {
-            //    expand: true,
-            //    src: 'bower_components/**',
-            //    dest: 'build/'
-            //},
-            //
 
             bower_css: {
                 cwd: 'bower_components/',
@@ -151,7 +135,6 @@ module.exports = function (grunt) {
                 flatten: true,
                 filter: 'isFile'
             },
-
 
             // we need a patched version of livereload to work within a chrome app
             // see: https://github.com/mklabs/tiny-lr#0.0.5
@@ -184,6 +167,7 @@ module.exports = function (grunt) {
                 dest: 'build/',
                 filter: 'isFile'
             },
+
             appAssets: {
                 expand: true,
                 src: [
