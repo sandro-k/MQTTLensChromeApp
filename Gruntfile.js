@@ -99,6 +99,7 @@ module.exports = function (grunt) {
             polymer: {
                 expand: true,
                 src: [
+                    'bower_components/web-animations-js/web-animations-next-lite.*',
                     'bower_components/webcomponentsjs/webcomponents.js',
                     'bower_components/polymer/polymer.js',
                     'bower_components/core-focusable/polymer-mixin.js',
