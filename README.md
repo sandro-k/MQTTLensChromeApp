@@ -1,4 +1,17 @@
-# MQTTLens Chrome App
+# MQTTLens Chrome App Upgrate to Polymer v1.X
+
+This branch is used to upgrade MQTTLens to Polymer v1.X and to restructure and rewrite the application.
+
+## TO-DO
+
+-[] * Update NPM-Dependencies
+-[] * Update to Polymer 1.X
+-[] * * Update Polymer Core-* v0.5 elements to Iron-* v1.X Elements 
+-[] * Update Grunttasks
+-[] * * Add Browserify Grunt-Task to build custom MQTT.js with TCP/SSL support for ChromeApp
+ 
+ 
+
 
 ## Get started and loading the Dev version of MQTTLens
 
