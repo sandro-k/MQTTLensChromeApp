@@ -23,8 +23,7 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#~0.5.5",
-    "mqtt-lens": "sandro-k/mqtt-lens#~0.0.3",
+    "polymer": "Polymer/polymer#~1.5.0",
     "chrome-app-livereload": "bestander/chrome-app-livereload#~0.0.5"
   }
 }
