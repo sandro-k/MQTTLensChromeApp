@@ -6,17 +6,18 @@ This branch is used to upgrade MQTTLens to Polymer v1.X and to restructure and r
 
 -[] * Update NPM-Dependencies
 -[] * Update to Polymer 1.X
--[] * * Update Polymer Core-* v0.5 elements to Iron-* v1.X Elements 
+-[]     * Add Webcomponent Tester
+-[]     * Update Polymer Core-* v0.5 elements to Iron-* v1.X Elements 
 -[] * Update Grunttasks
 -[] * * Add Browserify Grunt-Task to build custom MQTT.js with TCP/SSL support for ChromeApp
 
 # Project Structure
 * *\app* main directory for application files
-** *app\elements* main folder for mqttlens elements  
-*** *app\elements\controller* folder for mqttlens controller elements
-*** *app\elements\model* folder for mqttlens model elements
-*** *app\elements\ui* folder for mqttlens ui elements
-
+    * *\app\elements* main folder for mqttlens elements  
+        * *\app\elements\controller* folder for mqttlens controller elements
+        * *\app\elements\model* folder for mqttlens model elements
+        * *\app\elements\ui* folder for mqttlens ui elements
+    * *\app\test\* folder for [web-component-tester](https://github.com/Polymer/web-component-tester)
  
  
 
@@ -26,10 +27,6 @@ This branch is used to upgrade MQTTLens to Polymer v1.X and to restructure and r
 `git clone https://github.com/sandro-k/MQTTLensChromeApp.git`
 
 `cd MQTTLensChromeApp`
-
-`git submodule init`
-
-`git submodule update`
 
 `npm install`
 
