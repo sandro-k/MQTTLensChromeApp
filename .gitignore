@@ -1,35 +1,12 @@
-bower_components/
-!bower_components/mqtt-lens
-!bower_components/mqtt-message-ui
-!bower_components/mqtt-message-detail-ui
-!bower_components/mqtt-connection-ui
-!bower_components/mqtt-connection
-!bower_components/mqtt-lens-style
-!bower_components/mqtt-subscription-ui
-!bower_components/changeover-icon
-!bower_components/code-pretty
-!bower_components/chrome-storage/
-
-
-build/
-#build.*
 .idea/
 .bowerrc
 .DS_Store
+/.sass-cache/
 
 ## File-based project format
 *.ipr
 *.iml
 *.iws
 
-# igonre css files as all style sheats are created via SCSS
-# TODO(sandro-k) remove css files after moving all styles to the elements
-# *.css
-styles/*.css
 node_modules
 
-/.sass-cache/
-
-/builds
-/ideas
-MQTTLens_*.zip
