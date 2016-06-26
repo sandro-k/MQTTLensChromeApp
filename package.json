@@ -25,9 +25,9 @@
     "grunt-contrib-uglify": "~0.4.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-mkdir": "^0.1.2",
-    "grunt-vulcanize": "^0.6.4"
+    "grunt-vulcanize": "^0.6.4",
+    "web-component-tester": "^4.3.1"
   },
   "dependencies": {
-
   }
 }

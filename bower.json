@@ -24,6 +24,13 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#~1.5.0",
-    "chrome-app-livereload": "bestander/chrome-app-livereload#~0.0.5"
+    "chrome-app-livereload": "bestander/chrome-app-livereload#~0.0.5",
+    "mqtt-elements": "~0.0.6-beta"
+  },
+  "resolutions": {
+    "polymer": "~1.5.0"
+  },
+  "devDependencies": {
+    "web-component-tester": "~4.3.1"
   }
 }
