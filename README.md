@@ -38,6 +38,9 @@ You will also need a few other tools installed to properly complete the build:
 
 ## Changelog
 
+0.0.9
+* trim connection strings on save [MQTTLensChromeApp/issues/7](https://github.com/sandro-k/MQTTLensChromeApp/issues/7)
+
 0.0.2
 * Updated to Polymer 0.5.5 and webcomponents.js
 
