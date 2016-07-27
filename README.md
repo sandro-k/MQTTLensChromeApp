@@ -38,6 +38,9 @@ You will also need a few other tools installed to properly complete the build:
 
 ## Changelog
 
+0.0.11
+* adding the ability to connect/disconnect on demand
+
 0.0.10
 * making JSON paylod copyable 
 

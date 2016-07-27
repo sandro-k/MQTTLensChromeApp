@@ -1,6 +1,6 @@
 {
   "name": "MQTTLensApp",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "A MQTT debugging app for Chrome",
   "author": "Sandro Kock",
   "repository": {
