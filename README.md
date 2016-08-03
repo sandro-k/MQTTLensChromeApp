@@ -38,6 +38,9 @@ You will also need a few other tools installed to properly complete the build:
 
 ## Changelog
 
+0.0.12
+* replacing &times; with x in mqtt-message-detail-ui.html
+
 0.0.11
 * adding the ability to connect/disconnect on demand
 
